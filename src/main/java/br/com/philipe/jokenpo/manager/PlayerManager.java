@@ -13,7 +13,7 @@ public class PlayerManager {
 
 	private Map<String, Player> players = new HashMap<>();
 
-	public void clear() {
+	public void restart() {
 		players.clear();
 	}
 	

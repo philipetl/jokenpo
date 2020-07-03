@@ -62,7 +62,7 @@ public class RefereeManager {
 			result = "Draw: " + winner.toString();
 		}
 
-		playerManager.clear();
+		playerManager.restart();
 		return result;
 	}
 

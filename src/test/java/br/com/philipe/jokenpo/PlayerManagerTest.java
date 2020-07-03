@@ -23,7 +23,7 @@ class PlayerManagerTest {
 
 	@BeforeEach
 	private void loadPlayers() throws InvalidAttributesException {
-		playerManager.clear();
+		playerManager.restart();
 		playerManager.registerPlayer(new Player("Leonard", "PEDRA"));
 		playerManager.registerPlayer(new Player("Howard", "TESOURA"));
 		playerManager.registerPlayer(new Player("Raj", "TESOURA"));
@@ -52,7 +52,7 @@ class PlayerManagerTest {
 		Player newPlayer = new Player("Sheldon", "PEDRA");
 
 		Map<String, Player> expected = playerManager.getPlayers();
-		
+
 		try {
 			playerManager.registerPlayer(newPlayer);
 		} catch (Exception e) {
@@ -78,7 +78,7 @@ class PlayerManagerTest {
 
 		assertEquals(expected, playerManager.getPlayers());
 	}
-	
+
 	@Test
 	void shouldUpdatePlayerIfRegistered() {
 		Player player = new Player("Raj", "PAPEL");
@@ -95,13 +95,13 @@ class PlayerManagerTest {
 		Map<String, Player> actual = playerManager.getPlayers();
 		assertEquals(expected, actual);
 	}
-	
+
 	@Test
 	void shouldThrowExceptionWhenUpdatePlayerNotRegistered() {
 		Player player = new Player("Penny", "TESOURA");
 
 		Map<String, Player> expected = playerManager.getPlayers();
-		
+
 		try {
 			playerManager.updatePlayer(player);
 		} catch (IllegalArgumentException e) {
@@ -112,7 +112,7 @@ class PlayerManagerTest {
 		Map<String, Player> actual = playerManager.getPlayers();
 		assertEquals(expected, actual);
 	}
-	
+
 	@Test
 	void shouldDeletePlayerIfRegistered() {
 		Player player = new Player("Raj");
@@ -129,13 +129,13 @@ class PlayerManagerTest {
 		Map<String, Player> actual = playerManager.getPlayers();
 		assertEquals(expected, actual);
 	}
-	
+
 	@Test
 	void shouldThrowExceptionWhenDeletePlayerNotRegistered() {
 		Player player = new Player("Penny");
 
 		Map<String, Player> expected = playerManager.getPlayers();
-		
+
 		try {
 			playerManager.deletePlayer(player);
 		} catch (IllegalArgumentException e) {
